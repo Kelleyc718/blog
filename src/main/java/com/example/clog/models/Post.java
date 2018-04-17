@@ -1,5 +1,8 @@
 package com.example.clog.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Post implements Posts {
     private long id;
     private String username;
@@ -24,6 +27,23 @@ public class Post implements Posts {
         String title = "Tough Love";
         String body = "I love my boy. But boy does he need a whooping sometimes! He is a hellion that loves to be mischievous!";
         return new Post(username, title, body);
+    }
+
+    public static Post myPost2() {
+        String username = "PowderedToastMan";
+        String title = "Love sugar powdered toast";
+        String body = "As a lover and connoisseur of fine breakfast treats, nothing " +
+                "gets my tighty whiteys in a bunch faster than powdered toast. " +
+                "Sprinkle some sugar, a little cinnamon, maybe a splash of Canadian " +
+                "amber...";
+        return new Post(username, title, body);
+    }
+
+    public static List<Post> all() {
+        List<Post> posts = new ArrayList<>();
+        posts.add(myPost());
+        posts.add(myPost2());
+        return posts;
     }
 
     public String getUsername() { return username; }

@@ -1,19 +1,25 @@
 package com.example.clog.controllers;
 
 import com.example.clog.models.Post;
+import com.example.clog.models.Posts;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 public class PostController {
     @GetMapping("/posts/index")
-    @ResponseBody
-    public String index() {
-        return "Index page";
+    public String index(Model md) {
+        List<Post> posts = Post.all();
+        md.addAttribute("posts", posts);
+        return "posts/index";
     }
+
 
     @GetMapping("/posts/show")
     public String individualPost(Model md) {

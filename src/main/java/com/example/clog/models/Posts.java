@@ -1,4 +1,4 @@
 package com.example.clog.models;
 
-interface Posts {
+public interface Posts {
 }

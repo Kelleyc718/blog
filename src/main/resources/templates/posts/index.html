@@ -1,8 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments/head :: head()">
+<head th:replace="fragments/head :: head('Welcome to Clogs!')">
 </head>
 <body>
+<div class="container">
+	<div th:each="post: ${posts}" class="card bg-dark col-12 col-sm-10 col-lg-6 text-white my-5 mt-4 py-4">
+		<div class="card-body col-12 my-5 mb-4 py-4">
+			<div class="card-title col-12">
+				<h5 th:text="${post.title}"></h5>
+			</div>
+			<div class="card-text col-12">
+				<p th:text="${post.body}"></p>
+			</div>
+			<div class="card-subtitle">
+				<small th:text="${post.username}"></small>
+			</div>
+		</div>
+	</div>
+</div>
 <footer th:replace="fragments/footer :: footer">
 </footer>
 </body>
