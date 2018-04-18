@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 public class PostController {
@@ -37,13 +36,36 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
-    public String createForm() {
-        return "Form used to create posts";
+    public String createForm(Model md) {
+        md.addAttribute("post", new Post());
+        return "posts/create";
     }
 
-    @RequestMapping(value="/posts/create", method = POST)
-    public String createPost() {
-        return "success";
+    @PostMapping("/posts/create")
+    public String createPost(
+        @RequestParam(name = "title") String title,
+        @RequestParam(name = "body") String body
+    ) {
+        Post post = new Post("username", title, body);
+        postSvc.save(post);
+        return "redirect:";
+    }
+
+    @GetMapping("/posts/edit{id}")
+    public String showEdit(@PathVariable long id, Model md) {
+        md.addAttribute("post", postSvc.findOne(id));
+        return "/posts/edit";
+    }
+
+    @PostMapping("/posts/edit")
+    public String editPost(
+            @RequestParam(name = "id") long id,
+            @RequestParam(name = "title") String title,
+            @RequestParam(name = "body") String body
+            ) {
+        Post post = postSvc.findOne(id);
+        post.setTitle(title);
+        post.setBody(body);
+        return "redirect:";
     }
 }
