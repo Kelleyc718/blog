@@ -5,16 +5,20 @@
 <body>
 <div class="container">
 	<div th:each="post: ${posts}" class="card bg-dark col-12 col-sm-10 col-lg-6 text-white my-5 mt-4 py-4">
-		<div class="card-body col-12 my-5 mb-4 py-4">
+		<div class="card-body col-12 my-2 mb-4 py-2">
 			<div class="card-title col-12">
 				<h5 th:text="${post.title}"></h5>
 			</div>
 			<div class="card-text col-12">
 				<p th:text="${post.body}"></p>
 			</div>
-			<div class="card-subtitle">
+			<div class="card-text col-12">
 				<p>Posted by: <span th:text="${post.username}"></span></p>
+				<a th:href="@{'/posts/edit' + ${post.id}}">
+					<input type="button" class="btn btn-primary" value="Edit"/>
+				</a>
 			</div>
+			
 		</div>
 	</div>
 </div>
