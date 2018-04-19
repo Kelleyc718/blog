@@ -1,20 +1,33 @@
 package com.example.clog.models;
 
-public class Post implements Posts {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "posts")
+public class Post {
+
+    @Id
+    @GeneratedValue
     private long id;
-    private String username;
+
+    @Column(nullable = false, length = 100)
     private String title;
+
+    @Column(nullable = false)
     private String body;
 
-    public Post(String username, String title, String body) {
-        this.username = username;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public Post(String title, String body, User user) {
         this.title = title;
         this.body = body;
+        this.user = user;
     }
 
-    public Post(long id, String username, String title, String body) {
+    public Post(long id, String title, String body) {
         this.id = id;
-        this.username = username;
         this.title = title;
         this.body = body;
     }
@@ -22,10 +35,6 @@ public class Post implements Posts {
     public Post() {
 
     }
-
-    public String getUsername() { return username; }
-
-    public void setUsername(String username) { this.username = username; }
 
     public String getTitle() { return title; }
 
@@ -41,5 +50,13 @@ public class Post implements Posts {
 
     public long getId() {
         return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

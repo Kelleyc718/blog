@@ -13,12 +13,11 @@
 				<p th:text="${post.body}"></p>
 			</div>
 			<div class="card-text col-12">
-				<p>Posted by: <span th:text="${post.username}"></span></p>
+				<p>Posted by: <span th:text="${post.getUser().getUserName()}"></span></p>
 				<a th:href="@{'/posts/edit' + ${post.id}}">
 					<input type="button" class="btn btn-primary" value="Edit"/>
 				</a>
 			</div>
-			
 		</div>
 	</div>
 </div>
