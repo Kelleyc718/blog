@@ -24,16 +24,16 @@ public class UserController {
 
     @PostMapping("/registration")
     public String createUser(
-            @RequestParam(name = "userId") long userId,
+            @RequestParam(name = "id") long id,
             @RequestParam(name = "username") String username,
-            @RequestParam(name = "pass") String pass,
-            @RequestParam(name = "confPass") String confPass,
-            @RequestParam(name = "firstName") String firstName,
-            @RequestParam(name = "lastName") String lastName,
+            @RequestParam(name = "password") String password,
+            @RequestParam(name = "confPassword") String confPassword,
+            @RequestParam(name = "firstname") String firstname,
+            @RequestParam(name = "lastname") String lastname,
             @RequestParam(name = "email") String email
         ) {
-        if(pass.equalsIgnoreCase(confPass)) {
-            User user = new User(userId, username, pass, firstName, lastName, email);
+        if(password.equalsIgnoreCase(confPassword)) {
+            User user = new User(id, username, password, firstname, lastname, email);
             userDao.save(user);
             return "redirect:";
         } else {

@@ -5,51 +5,48 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id @GeneratedValue
     private long id;
 
     @Column(nullable = false, length = 20)
-    private String userName;
+    private String username;
 
     @Column(nullable = false)
-    private String passWord;
+    private String password;
 
     @Column(nullable = false, length = 20)
-    private String firstName;
+    private String firstname;
 
     @Column(nullable = false, length = 20)
-    private String lastName;
+    private String lastname;
 
     @Column(nullable = false, length = 100)
     private String email;
 
-    public User(long id, String userName, String passWord, String firstName, String
-            lastName, String email) {
+    public User(long id, String username, String password, String firstname, String
+            lastname, String email) {
         this.id = id;
-        this.userName = userName;
-        this.passWord = passWord;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.email = email;
     }
 
     public User() { }
 
-    public String getUserName() { return userName; }
+    public String getUsername() { return username; }
 
-    public void setUserName(String userName) { this.userName = userName; }
+    public void setUsername(String username) { this.username = username; }
 
-    public String getPassWord() { return passWord; }
+    public String getFirstname() { return firstname; }
 
-    public void setPassWord(String passWord) { this.passWord = passWord; }
+    public void setFirstname(String firstname) { this.firstname = firstname; }
 
-    public String getFirstName() { return firstName; }
+    public String getLastname() { return lastname; }
 
-    public void setFirstName(String firstName) { this.firstName = firstName; }
-
-    public String getLastName() { return lastName; }
-
-    public void setLastName(String lastName) { this.lastName = lastName; }
+    public void setLastname(String lastname) { this.lastname = lastname; }
 
     public String getEmail() { return email; }
 
@@ -58,6 +55,15 @@ public class User {
     public long getUserId() { return id; }
 
     public void setUserId(long id) { this.id = id; }
+
+    public long getId() { return id; }
+
+    public void setId(long id) { this.id = id; }
+
+    public String getPassword() { return password; }
+
+    public void setPassword(String password) { this.password = password;
+    }
 }
 
 

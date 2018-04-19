@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class PostController {
     private final PostRepo postDao;
-    private UserRepo userDao;
 
     public PostController(PostRepo postDao) {
         this.postDao = postDao;
@@ -29,7 +28,7 @@ public class PostController {
         Post post = postDao.findOne(id);
         String title = post.getTitle();
         String body = post.getBody();
-        String username = post.getUser().getUserName();
+        String username = post.getUser().getUsername();
         md.addAttribute("title", title);
         md.addAttribute("body", body);
         md.addAttribute("username", username);
@@ -47,7 +46,9 @@ public class PostController {
         @RequestParam(name = "title") String title,
         @RequestParam(name = "body") String body
     ) {
-        User user = userDao.findOne(1L);
+        User user = new User();
+        user.setUserId(1L);
+
         Post post = new Post(title, body, user);
         postDao.save(post);
         return "redirect:";
@@ -84,6 +85,5 @@ public class PostController {
         Post post = postDao.findOne(id);
         postDao.delete(post);
         return "redirect:";
-
     }
 }
