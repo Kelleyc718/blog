@@ -24,6 +24,9 @@
 					</div>
 					<textarea class="col-12" id="body" th:field="*{body}"></textarea>
 				</div>
+				<a th:href="@{'/posts/edit' + ${post.id}}">
+					<input class="btn btn-primary" type="button" value="Go Back"/>
+				</a>
 				<input class="btn btn-primary btn-danger" type="submit" value="Delete"/>
 			</form>
 		</div>

@@ -25,7 +25,8 @@
 					<textarea class="col-12" id="body" th:field="*{body}" th:value="*{body}"></textarea>
 				</div>
 				<input class="btn btn-primary" type="submit" value="Save Edit"/>
-				<input class="btn btn-primary" type="submit" value="Delete Post"/>
+				<a th:href="@{'/posts/delete' + ${post.id}}">
+					<input class="btn btn-primary btn-danger" type="button" value="Delete Post"/></a>
 			</form>
 		</div>
 	</div>

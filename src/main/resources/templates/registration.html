@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments/head :: head('Registration')">
+<head th:replace="fragments/head :: head('Login/Register')">
 </head>
-
 <body>
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registrationModal">
 		Register Now!
@@ -20,31 +19,34 @@
 				</div>
 				<div class="modal-body">
 					<div class="container">
-						<div class="card col-12 col-md-6 my-5 mt-4 mx-auto">
+						<div class="card col-12 col-md-10 my-5 mt-4 mx-auto">
 							<div class="card-body col-12">
-								<form method="POST" th:action="@{/registration}" th:if="${user != null}"
-								      th:object="${user}">
+								<form method="POST" th:action="@{/registration}" th:object="${user}">
 									<input type="hidden" th:field="*{id}" th:value="*{id}"/>
 									<div class="card-title col-12">
-										<label for="username">Username</label>
+										<div>
+											<label for="username">Username</label>
+										</div>
 										<input id="username" type="text" th:field="*{username}"/>
 									</div>
 									<div class="card-title col-12">
-										<label for="email">Email</label>
+										<div>
+											<label for="email">Email</label>
+										</div>
 										<input id="email" type="email" th:field="*{email}"/>
 									</div>
 									<div class="card-title col-12">
-										<label for="password">Password</label>
-										<input id="password" th:field="*{password}"/>
+										<div>
+											<label for="password">Password</label>
+										</div>
+										<input type="password" id="password" th:field="*{password}"/>
 									</div>
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<button type="submit" class="btn btn-primary">Register</button>
 								</form>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
 				</div>
 			</div>
 		</div>

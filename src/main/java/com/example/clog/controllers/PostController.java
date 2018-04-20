@@ -3,10 +3,12 @@ package com.example.clog.controllers;
 import com.example.clog.models.Post;
 import com.example.clog.models.User;
 import com.example.clog.repos.PostRepo;
-import com.example.clog.repos.UserRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class PostController {
@@ -43,11 +45,12 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String createPost(
-        @RequestParam(name = "title") String title,
-        @RequestParam(name = "body") String body
+            @RequestParam(name = "title") String title,
+            @RequestParam(name = "body") String body
     ) {
         User user = new User();
-        user.setUserId(1L);
+        user.setId(1L);
+        user.setEmail("kelleyc@gmail.com");
 
         Post post = new Post(title, body, user);
         postDao.save(post);
@@ -65,15 +68,17 @@ public class PostController {
             @RequestParam(name = "id") long id,
             @RequestParam(name = "title") String title,
             @RequestParam(name = "body") String body
-            ) {
+    ) {
         Post post = postDao.findOne(id);
         post.setTitle(title);
         post.setBody(body);
+        postDao.save(post);
         return "redirect:";
     }
 
     @GetMapping("/posts/delete{id}")
     public String deletePost(@PathVariable long id, Model md) {
+        md.addAttribute("id", id);
         md.addAttribute("post", postDao.findOne(id));
         return "/posts/delete";
     }
