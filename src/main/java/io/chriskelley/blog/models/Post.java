@@ -1,6 +1,7 @@
 package io.chriskelley.blog.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
@@ -17,6 +18,21 @@ public class Post {
 
     @OneToOne
     private User user;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "post_categories",
+            joinColumns = {@JoinColumn(name = "post_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")}
+    )
+    private List<Categories> categories;
+
+    public Post(String title, String body, User user, List<Categories> categories) {
+        this.title = title;
+        this.body = body;
+        this.user = user;
+        this.categories = categories;
+    }
 
     public Post(String title, String body, User user) {
         this.title = title;
@@ -57,6 +73,14 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Categories> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Categories> categories) {
+        this.categories = categories;
     }
 }
 

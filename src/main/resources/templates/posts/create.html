@@ -9,25 +9,34 @@
 		<div class="card-body col-12">
 			<form method="POST" th:action="@{/posts/create}" th:object="${post}">
 				<div class="card-title col-12">
-					<h4>Create a new Clog!</h4>
+					<h4>Create a new Post!</h4>
 				</div>
 				<div class="card-text my-3">
 					<div>
-						<label for="title">Clog Title</label>
+						<label for="title">Title</label>
 					</div>
 					<input class="col-12" id="title" th:field="*{title}"/>
 				</div>
 				<div class="card-text my-3">
 					<div>
-						<label for="body">Start writing</label>
+						<label for="body">Share your thoughts with the world!</label>
 					</div>
 					<textarea class="col-12" id="body" th:field="*{body}"></textarea>
 				</div>
-				<input class="btn btn-primary" type="submit" value="Clog it!"/>
+				<div class="card-text my-3">
+					<div>
+						<label for="category">Tag some categories to reach others with similar interests.</label>
+					</div>
+					<input id="category"/>
+					<button type="button" id="addBtn">+</button>
+					<ul id="catList" th:field="*{categories}"></ul>
+				</div>
+				<input id="submit" class="btn btn-primary" type="submit" value="Create Post"/>
 			</form>
 		</div>
 	</div>
 </div>
+<script th:href="@{/js/main.js}"></script>
 <footer th:replace="fragments/footer :: footer">
 </footer>
 </body>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments/head :: head('Welcome to Clogs!')">
+<head th:replace="fragments/head :: head('Welcome!')">
 </head>
 <body>
 <nav th:replace="fragments/navbar :: nav"></nav>
@@ -14,7 +14,8 @@
 				<p th:text="${post.body}"></p>
 			</div>
 			<div class="card-text col-12">
-				<p>Posted by: <span th:text="${post.getUser().getUsername()}"></span></p>
+				<p>Posted by: <span th:text="${post.user.username}"></span></p>
+				<small class="btn btn-small"><span th:each="category: ${categories}"></span></small>
 				<a th:href="@{'/posts/edit' + ${post.id}}">
 					<input type="button" class="btn btn-primary" value="Edit"/>
 				</a>

@@ -2,6 +2,8 @@ package io.chriskelley.blog.controllers;
 
 import io.chriskelley.blog.models.User;
 import io.chriskelley.blog.repos.UserRepo;
+import io.chriskelley.blog.services.UserDetailsLoader;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,4 +41,10 @@ public class UserController {
         return "redirect:login";
     }
 
+
+    @GetMapping("/login")
+    public String loginForm(Model model) {
+        model.addAttribute("user", new User());
+        return "/login";
+    }
 }
