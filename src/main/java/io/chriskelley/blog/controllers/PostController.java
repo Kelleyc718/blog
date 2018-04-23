@@ -3,6 +3,7 @@ package io.chriskelley.blog.controllers;
 import io.chriskelley.blog.models.Post;
 import io.chriskelley.blog.models.User;
 import io.chriskelley.blog.repos.PostRepo;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,8 +36,10 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        post.setUser(loggedInUser);
         postDao.save(post);
-        return "redirect:";
+        return "redirect:/posts";
     }
 
     @GetMapping("/posts/edit{id}")

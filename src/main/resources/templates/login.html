@@ -7,18 +7,18 @@
 <div class="container">
 	<div class="card col-12 col-md-10 my-5 mt-4 mx-auto">
 		<div class="card-body col-12">
-			<form method="POST" th:action="@{/login}" th:object="${user}">
+			<form method="POST" th:action="@{/login}">
 				<div class="card-title">
 					<div>
 						<label for="username">Username</label>
 					</div>
-					<input id="username" type="text" th:field="*{username}"/>
+					<input id="username" th:name="username" type="text"/>
 				</div>
 				<div class="card-title">
 					<div>
 						<label for="password">Password</label>
 					</div>
-					<input type="password" id="password" th:field="*{password}"/>
+					<input type="password" th:name="password" id="password"/>
 				</div>
 				<button type="submit" class="btn btn-primary">Login</button>
 			</form>
