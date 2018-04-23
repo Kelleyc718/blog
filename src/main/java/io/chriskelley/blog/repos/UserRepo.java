@@ -1,8 +1,8 @@
-package com.example.clog.repos;
+package io.chriskelley.blog.repos;
 
-import com.example.clog.models.User;
+import io.chriskelley.blog.models.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepo extends CrudRepository<User, Long> {
-
+    User findByUsername(String username);
 }

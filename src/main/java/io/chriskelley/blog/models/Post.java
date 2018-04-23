@@ -1,4 +1,4 @@
-package com.example.clog.models;
+package io.chriskelley.blog.models;
 
 import javax.persistence.*;
 

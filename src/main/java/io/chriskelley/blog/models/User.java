@@ -1,4 +1,4 @@
-package com.example.clog.models;
+package io.chriskelley.blog.models;
 
 // Imports managed by Spring Boot and ThymeLeaf
 
@@ -33,7 +33,7 @@ public class User {
     }
 
     public User(User copy) {
-        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        id = copy.id;
         email = copy.email;
         username = copy.username;
         password = copy.password;
@@ -71,7 +71,6 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
 }
 
 

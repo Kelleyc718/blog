@@ -3,6 +3,7 @@
 <head th:replace="fragments/head :: head('Login/Register')">
 </head>
 <body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registrationModal">
 		Register Now!
 	</button>
@@ -22,7 +23,6 @@
 						<div class="card col-12 col-md-10 my-5 mt-4 mx-auto">
 							<div class="card-body col-12">
 								<form method="POST" th:action="@{/registration}" th:object="${user}">
-									<input type="hidden" th:field="*{id}" th:value="*{id}"/>
 									<div class="card-title col-12">
 										<div>
 											<label for="username">Username</label>

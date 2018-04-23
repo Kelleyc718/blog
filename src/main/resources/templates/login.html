@@ -4,7 +4,28 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
-
+<div class="container">
+	<div class="card col-12 col-md-10 my-5 mt-4 mx-auto">
+		<div class="card-body col-12">
+			<form method="POST" th:action="@{/login}" th:object="${user}">
+				<input type="hidden" th:field="*{id}" th:value="*{id}"/>
+				<div class="card-title col-12">
+					<div>
+						<label for="username">Username</label>
+					</div>
+					<input id="username" type="text" th:field="*{username}"/>
+				</div>
+				<div class="card-title col-12">
+					<div>
+						<label for="password">Password</label>
+					</div>
+					<input type="password" id="password" th:field="*{password}"/>
+				</div>
+				<button type="submit" class="btn btn-primary">Login</button>
+			</form>
+		</div>
+	</div>
+</div>
 <footer th:replace="fragments/footer :: footer">
 </footer>
 </body>

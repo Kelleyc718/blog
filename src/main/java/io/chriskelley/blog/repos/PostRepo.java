@@ -1,6 +1,6 @@
-package com.example.clog.repos;
+package io.chriskelley.blog.repos;
 
-import com.example.clog.models.Post;
+import io.chriskelley.blog.models.Post;
 import org.springframework.data.repository.CrudRepository;
 
 public interface PostRepo extends CrudRepository<Post, Long> {

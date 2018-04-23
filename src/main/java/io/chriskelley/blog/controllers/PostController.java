@@ -1,8 +1,8 @@
-package com.example.clog.controllers;
+package io.chriskelley.blog.controllers;
 
-import com.example.clog.models.Post;
-import com.example.clog.models.User;
-import com.example.clog.repos.PostRepo;
+import io.chriskelley.blog.models.Post;
+import io.chriskelley.blog.models.User;
+import io.chriskelley.blog.repos.PostRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,7 +50,6 @@ public class PostController {
     ) {
         User user = new User();
         user.setId(1L);
-        user.setEmail("kelleyc@gmail.com");
 
         Post post = new Post(title, body, user);
         postDao.save(post);
