@@ -19,6 +19,28 @@ public class Post {
     @OneToOne
     private User user;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    private List<PostImage> Images;
+
+    public List<PostImage> getImages() {
+        return Images;
+    }
+
+    public void setImages(List<PostImage> Images) {
+        this.Images = Images;
+    }
+
+    public Post(String title, String body, User user, List<PostImage> Images,
+                List<Categories>
+            categories) {
+        this.title = title;
+        this.body = body;
+        this.user = user;
+        this.Images = Images;
+        this.categories = categories;
+
+    }
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "post_categories",

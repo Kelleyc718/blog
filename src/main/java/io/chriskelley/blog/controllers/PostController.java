@@ -38,6 +38,7 @@ public class PostController {
     public String createPost(@ModelAttribute Post post) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(loggedInUser);
+
         postDao.save(post);
         return "redirect:/posts";
     }
