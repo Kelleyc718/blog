@@ -1,6 +1,7 @@
 package io.chriskelley.blog.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -11,9 +12,11 @@ public class Post {
     private long id;
 
     @Column(nullable = false)
+    @Size(min = 2, max = 50, message = "Title cannot be left blank.")
     private String title;
 
     @Column(columnDefinition = "TEXT")
+    @Size(min = 2, max = 500, message = "Body cannot be left blank.")
     private String body;
 
     @OneToOne

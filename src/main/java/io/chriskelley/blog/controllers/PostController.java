@@ -6,7 +6,10 @@ import io.chriskelley.blog.repos.PostRepo;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 public class PostController {
@@ -35,7 +38,12 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String createPost(@ModelAttribute Post post) {
+    public String createPost(@Valid Post post, Errors errors, Model model) {
+        if(errors.hasErrors()) {
+            model.addAttribute(post);
+            return "/posts/create";
+        }
+
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(loggedInUser);
 
@@ -43,7 +51,7 @@ public class PostController {
         return "redirect:/posts";
     }
 
-    @GetMapping("/posts/edit{id}")
+    @GetMapping("/posts/edit={id}")
     public String showEdit(@PathVariable long id, Model model) {
         model.addAttribute("post", postDao.findOne(id));
         return "/posts/edit";

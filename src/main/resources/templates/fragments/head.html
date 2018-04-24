@@ -9,16 +9,9 @@
 	      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	      crossorigin="anonymous"/>
-	<link rel="stylesheet" th:href="@{/css/landing.css}"/>
+	<link rel="stylesheet" th:href="@{/css/main.css}"/>
 </head>
 <body>
-<div sec:authorize="isAuthenticated()">
-	This content is only shown to authenticated users.
-	
-	User ID: <span th:text="${#authentication.principal.id}"/>
-	Username: <span th:text="${#authentication.principal.username}"/>
-	Email: <span th:text="${#authentication.principal.email}"/>
-</div>
 </body>
 </html>
 

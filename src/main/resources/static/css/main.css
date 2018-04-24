@@ -12,9 +12,9 @@ video {
 
 .landing {
     display: grid;
-    grid-template-areas: "nav" "." "content" "foot";
+    grid-template-areas: "nav" "." "content" "." "foot";
     grid-template-columns: 1fr;
-    grid-template-rows: 10vh 30vh 1fr 60vh;
+    grid-template-rows: 10vh 30vh 1fr 30vh 30vh;
 }
 
 nav {

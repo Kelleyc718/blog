@@ -5,23 +5,28 @@
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
 <div class="container">
-	<div class="card col-12 col-md-10 my-5 mt-4 mx-auto">
-		<div class="card-body col-12">
-			<form method="POST" th:action="@{/login}">
+	<div class="row align-items-center">
+		<div class="card col-md-10 my-5 mt-4 mx-auto bg-dark text-center text-white">
+			<div class="card-body col-8 mx-auto">
 				<div class="card-title">
-					<div>
-						<label for="username">Username</label>
-					</div>
-					<input id="username" th:name="username" type="text"/>
+					<h5>Log In</h5>
 				</div>
-				<div class="card-title">
-					<div>
-						<label for="password">Password</label>
-					</div>
-					<input type="password" th:name="password" id="password"/>
+				<div th:if="${param.error}">
+					<p class="danger">Invalid Username and Password.</p>
 				</div>
-				<button type="submit" class="btn btn-primary">Login</button>
-			</form>
+				<div th:if="${param.logout}">
+					<p class="success"> You have been logged out.</p>
+				</div>
+				<div class="card-text col-10 mx-auto">
+					<form class="mx-auto" th:action="@{/login}" method="post">
+						<label class="d-block" for="username">Username</label>
+						<input class="d-block col-10 mx-auto" id="username" name="username" type="text"/>
+						<label class="d-block my-3" for="password">Password</label>
+						<input class="d-block col-10 mx-auto" id="password" name="password" type="password"/>
+						<input class="btn btn-primary my-3 mx-auto d-block" type="submit" value="Log In"/>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

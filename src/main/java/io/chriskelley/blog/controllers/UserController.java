@@ -44,6 +44,11 @@ public class UserController {
 
     @GetMapping("/login")
     public String loginForm() {
-        return "/login";
+        Object loggedInUser = SecurityContextHolder.getContext().getAuthentication()
+                .getPrincipal();
+        if (loggedInUser.toString().equalsIgnoreCase("anonymousUser")) {
+            return "/login";
+        }
+        return "redirect:/posts";
     }
 }

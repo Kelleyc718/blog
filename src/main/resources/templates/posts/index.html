@@ -1,31 +1,36 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments/head :: head('${post.title}')">
+<html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/head :: head('Welcome!')">
 </head>
 <body>
 <nav th:replace="fragments/navbar :: nav"></nav>
 <div class="container">
 	<div th:each="post: ${posts}" class="card bg-dark col-12 col-sm-10 col-lg-6 text-white my-5 mt-4 py-4 mx-auto">
 		<div th:each="image : ${post.images}">
-			<div class="card-body col-12 my-2 mb-4 py-2">
-			<img witdh="50%" th:src="${image.path}"/>
+			<img class="card-img-top" th:src="${image.path}" alt="Card image cap"/>
+			<div class="card-body col-12 mb-4 py-2">
 		</div>
 			<a th:href="@{'/posts/show=' + ${post.id}}">
-			
-			<div class="card-title col-12">
-				<h5 th:text="${post.title}"></h5>
-			</div>
+				<div class="card-title col-12">
+					<h5 th:text="${post.title}"></h5>
+				</div>
+			</a>
 			<div class="card-text col-12">
 				<p th:text="${post.body}"></p>
 			</div>
 			<div class="card-text col-12">
-				<p>Posted by: <span th:text="${post.user.username}"></span></p>
-				<small class="btn btn-small"><span th:each="category: ${post.categories}"></span></small>
-				<a th:href="@{'/posts/edit=' + ${post.id}}">
-					<input type="button" class="btn btn-primary" value="Edit"/>
+				<p>Posted by:
+					<span th:text="${post.user.username}"></span>
+				</p>
+				<small class="btn btn-small">
+					<span th:each="category: ${post.categories}"></span>
+				</small>
+				<a th:if="${post.user.username}" th:href="@{'/posts/edit=' + ${post.id}}">
+					<div sec:authorize="isAuthenticated()">
+						<input type="button" class="btn btn-primary" value="Edit"/>
+					</div>
 				</a>
 			</div>
-			</a>
 		</div>
 	</div>
 </div>
