@@ -3,17 +3,18 @@
 <head th:replace="fragments/head :: head('Blog Post')">
 </head>
 <body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
 <div class="container">
 	<div class="card bg-dark col-12 col-sm-10 col-lg-6 text-white my-5">
 		<div class="card-body col-12">
 			<div class="card-title col-12">
-				<h5 th:text="${title}"></h5>
+				<h5 th:text="${post.title}"></h5>
 			</div>
 			<div class="card-text col-12">
-				<p th:text="${body}"></p>
+				<p th:text="${post.body}"></p>
 			</div>
 			<div class="card-subtitle">
-				<small th:text="${username}"></small>
+				<small th:text="${post.user.username}"></small>
 			</div>
 		</div>
 	</div>
