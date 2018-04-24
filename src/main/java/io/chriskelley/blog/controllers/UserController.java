@@ -22,18 +22,13 @@ public class UserController {
         this.encoder = encoder;
     }
 
-    /**
-     * @param model creates new user to populate a blank form.
-     * @return returns the registration url path.
-     */
-    @GetMapping("/registration")
-    public String createUserForm(Model model) {
-        model.addAttribute("user", new User());
-        return "/registration";
+    @GetMapping("/register")
+    public String createUserForm() {
+        return "/register";
     }
 
     // POST request used to submit values input by user
-    @PostMapping("/registration")
+    @PostMapping("/register")
     public String createUser(@ModelAttribute User user) {
         String passHash = encoder.encode(user.getPassword());
         user.setPassword(passHash);

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments/head :: head('Login/Register')">
+</head>
+<body>
+<form method="POST" th:action="@{/register}">
+	<label class="d-block" for="username">Username</label>
+	<input class="d-block mx-auto" id="username" name="username" type="text"/>
+	<label class="d-block" for="email">Email</label>
+	<input class="d-block mx-auto" id="email" name="email" type="text"/>
+	<label class="d-block mt-3" for="password">Password</label>
+	<input class="d-block mx-auto" id="password" name="password" type="password"/>
+	<label class="d-block mt-3" for="password">Confirm Password</label>
+	<input  class="d-block mx-auto" id="confirm-password" name="confirm-password" type="password"/>
+	<input class="btn btn-primary my-3 mx-auto d-block" type="submit" value="Log In"/>
+</form>
+</body>
+</html>

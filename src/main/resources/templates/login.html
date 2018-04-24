@@ -11,18 +11,18 @@
 				<div class="card-title">
 					<h5>Log In</h5>
 				</div>
-				<div th:if="${param.error}">
-					<p class="danger">Invalid Username and Password.</p>
+				<div class="alert alert-success" role="alert"  th:if="${param.logout}">
+					<p>You have been logged out.</p>
 				</div>
-				<div th:if="${param.logout}">
-					<p class="success"> You have been logged out.</p>
-				</div>
-				<div class="card-text col-10 mx-auto">
+				<div class="card-text mx-auto">
 					<form class="mx-auto" th:action="@{/login}" method="post">
 						<label class="d-block" for="username">Username</label>
-						<input class="d-block col-10 mx-auto" id="username" name="username" type="text"/>
-						<label class="d-block my-3" for="password">Password</label>
-						<input class="d-block col-10 mx-auto" id="password" name="password" type="password"/>
+						<input class="d-block mx-auto" id="username" name="username" type="text"/>
+						<label class="d-block mt-3" for="password">Password</label>
+						<input class="d-block mx-auto" id="password" name="password" type="password"/>
+						<div class="alert alert-danger my-3" role="alert" th:if="${param.error}">
+							<strong>Username/Password did not match</strong>
+						</div>
 						<input class="btn btn-primary my-3 mx-auto d-block" type="submit" value="Log In"/>
 					</form>
 				</div>

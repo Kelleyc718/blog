@@ -40,6 +40,7 @@ public class PostController {
     @PostMapping("/posts/create")
     public String createPost(@Valid Post post, Errors errors, Model model) {
         if(errors.hasErrors()) {
+            model.addAttribute(errors);
             model.addAttribute(post);
             return "/posts/create";
         }

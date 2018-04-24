@@ -5,28 +5,29 @@
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
 <div class="container">
-	<div class="card col-12 col-md-6 my-5 mt-4 mx-auto text-center">
+	<div class="card col-12 col-md-6 my-5 mt-4 mx-auto bg-dark text-center">
 		<div class="card-body col-12">
 			<form method="POST" th:action="@{/posts/create}" th:object="${post}">
 				<div class="card-title col-12">
 					<h4>Create a new Post!</h4>
 				</div>
 				<div class="card-text my-3">
-					<div>
-						<label for="title">Title</label>
+					<label class="d-block mx-auto" for="title">Title</label>
+					<input class="col-12 d-block mx-auto" id="title" th:field="*{title}"/>
+					<div class="alert alert-danger my-3" th:if="${#fields.hasErrors('title')}" role="alert">
+						<strong th:errors="*{title}"></strong>
 					</div>
-					<input class="col-12" id="title" th:field="*{title}"/>
 				</div>
 				<div class="card-text my-3">
-					<div>
-						<label for="body">Share your thoughts with the world!</label>
-					</div>
+					<label class="d-block mx-auto" for="body">Share your thoughts with the world!</label>
 					<textarea class="col-12" id="body" th:field="*{body}"></textarea>
+					<div class="alert alert-danger my-2" th:if="${#fields.hasErrors('body')}" role="alert">
+						<strong th:errors="*{body}"></strong>
+					</div>
 				</div>
 				<div class="card-text my-3">
-					<div>
-						<label for="category">Tag some categories to reach others with similar interests.</label>
-					</div>
+					<label class="d-block mx-auto" for="category">Tag some categories to reach others with similar
+						interests.</label>
 					<input id="category"/>
 					<button type="button" id="addBtn">+</button>
 					<ul id="catList" th:field="*{categories}"></ul>

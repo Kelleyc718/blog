@@ -13,7 +13,7 @@
 	<div class="collapse navbar-collapse" id="navbarToggler">
 		<ul class="navbar-nav ml-auto mt-2 mt-lg-0 bg-dark">
 			<li sec:authorize="!isAuthenticated()" class="nav-item">
-				<a class="nav-link" th:href="@{/registration}">Register</a>
+				<a class="nav-link" th:href="@{/register}">Register</a>
 			</li>
 			<li sec:authorize="!isAuthenticated()" class="nav-item">
 				<a class="nav-link" th:href="@{/login}">Login</a>
