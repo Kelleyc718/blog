@@ -5,7 +5,8 @@
 <body>
 <nav th:replace="fragments/navbar :: nav"></nav>
 <div class="container">
-	<div th:each="post: ${posts}" class="card bg-dark col-12 col-sm-10 col-lg-6 text-white my-5 mt-4 py-4 mx-auto">
+	<div th:each="post: ${posts}"
+	     class="border border-primary card bg-dark col-12 col-sm-10 col-lg-6 text-white my-5 mt-4 py-4 mx-auto">
 		<div th:each="image : ${post.images}">
 			<img class="card-img-top" th:src="${image.path}" alt="Card image cap"/>
 			<div class="card-body col-12 mb-4 py-2">
