@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments/head :: head('Oh No! ' + ${error})">
+</head>
+<body>
+<th:block th:switch="${error}">
+	<div th:case="'Internal Server Error'">
+		<h1>Hmm, something broke...we are sorry...</h1>
+	</div>
+	<div th:case="'Not Implemented'">
+		<h1>Whatever you're doing, we don't support it just yet. Stay tuned!</h1>
+	</div>
+	<div th:case="'Bad Gateway'">
+		<h1>You aren't supposed to be here, don't do it again ok?!</h1>
+	</div>
+	<div th:case="'Service Unavailable'">
+		<h1>This is probably our fault, we are working hard to get it back!</h1>
+	</div>
+	<div th:case="'Gateway Timeout'">
+		<h1>This is probably our fault, we are working hard to get it back!</h1>
+	</div>
+	<div th:case="'HTTP Version Not Supported'">
+		<h1>We don't support that...Try adding a "s" to your "http"!</h1>
+	</div>
+</th:block>
+<iframe
+		width="420"
+		height="315"
+		src="https://www.youtube.com/embed/NN75im_us4k?autoplay=1"
+		frameborder="0"
+		allowfullscreen="allowfullscreen">
+</iframe>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

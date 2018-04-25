@@ -1,5 +1,19 @@
+html, body {
+    height: 100vh;
+    width: 100vw;
+    line-height: 1.6em;
+}
+
+.container {
+    height: 90%;
+}
+
 body {
     font-family: 'Puritan', sans-serif;
+}
+
+.posts {
+    max-height: 30vh;
 }
 
 video {
@@ -10,15 +24,8 @@ video {
     min-height: 100%;
 }
 
-.landing {
-    display: grid;
-    grid-template-areas: "nav" "." "content" "." "foot";
-    grid-template-columns: 1fr;
-    grid-template-rows: 10vh 30vh 1fr 30vh 30vh;
-}
-
 nav {
-    z-index: 999;
+    z-index: 1;
     grid-area: nav;
 }
 
@@ -30,8 +37,21 @@ nav {
 }
 
 .nav-link > form > input {
+    color: rgba(255,255,255,.5);
+    cursor: pointer;
     text-decoration: none;
     background-color: transparent;
     border: none;
     padding-top: 0px;
+}
+
+.nav-link > form > input:hover {
+    color: #f8f9fa;
+}
+
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }

@@ -4,8 +4,16 @@
 <body>
 
 <footer th:fragment="footer" class="w100">
-	<div class="container-fluid bg-dark text-center rounded w-100">
-		<small class="text-center">CK app est. 2018 **IG** **LinkedIn** **Email**</small>
+	<div class="container-fluid bg-dark text-center my-auto w-100">
+		<small class="text-center text-white">
+			CKApp est. 2018
+			<a href="https://github.com/Kelleyc718">
+				<img th:src="@{/images/Github.svg}" height="30px"/>
+			</a>
+			<a href="https://www.linkedin.com/in/chrisdkelley/">
+				<img th:src="@{/images/LinkedIn.svg}" height="30px"/>
+			</a>
+		</small>
 	</div>
 	
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

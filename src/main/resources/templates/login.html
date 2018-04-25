@@ -4,28 +4,35 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
-<div class="container">
-	<div class="row align-items-center">
-		<div class="card col-md-10 my-5 mt-4 mx-auto bg-dark text-center text-white">
-			<div class="card-body col-8 mx-auto">
-				<div class="card-title">
-					<h5>Log In</h5>
-				</div>
-				<div class="alert alert-success" role="alert" th:if="${param.logout}">
-					<p>You have been logged out.</p>
-				</div>
-				<div class="card-text mx-auto">
-					<form class="mx-auto" th:action="@{/login}" method="post">
-						<label class="d-block rounded" for="username">Username</label>
-						<input class="d-block mx-auto rounded" id="username" name="username" type="text"/>
-						<label class="d-block mt-3 rounded" for="password">Password</label>
-						<input class="d-block mx-auto rounded" id="password" name="password" type="password"/>
-						<div class="alert alert-danger my-3 rounded" role="alert" th:if="${param.error}">
-							<strong>Username/Password did not match</strong>
-						</div>
-						<input class="btn btn-primary my-3 mx-auto d-block" type="submit" value="Log In"/>
-					</form>
-				</div>
+<div class="container d-flex justify-items-center align-items-center">
+	<div class="card col-md-10 bg-dark text-center text-white mx-auto h-auto d-flex justify-items-center align-items-center h-75">
+		<div class="card-body col-12 my-auto d-flex flex-column justify-items-center align-items-center">
+			<div class="card-title col-12 mt-auto mb-3">
+				<h4>Login or Register Today!</h4>
+			</div>
+			<div class="alert alert-success" role="alert" th:if="${param.logout}">
+				<p>You have been logged out.</p>
+			</div>
+			<div class="card-text mx-auto mb-auto">
+				<form class="mx-auto" th:action="@{/login}" method="post">
+					<label class="d-block rounded" for="username">
+						Username
+					</label>
+					<input class="d-block mx-auto rounded" id="username" name="username" type="text"/>
+					<label class="d-block mt-3 rounded" for="password">
+						Password
+					</label>
+					<input class="d-block mx-auto rounded" id="password" name="password" type="password"/>
+					<div class="alert alert-danger rounded mt-5" role="alert" th:if="${param.error}">
+							Username/Password did not match
+					</div>
+					<input class="btn btn-primary mt-5 mx-auto" type="submit" value="Login"/>
+					<button class="btn btn-primary mt-5 mx-auto">
+						<a class="text-white" th:href="@{/register}">
+							Register
+						</a>
+					</button>
+				</form>
 			</div>
 		</div>
 	</div>

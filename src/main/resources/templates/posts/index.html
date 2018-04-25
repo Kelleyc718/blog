@@ -1,39 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments/head :: head('Welcome!')">
 </head>
 <body>
 <nav th:replace="fragments/navbar :: nav"></nav>
-<div class="container">
-	<div th:each="post: ${posts}"
-	     class="border border-primary card bg-dark col-12 col-sm-10 col-lg-6 text-white my-5 mt-4 py-4 mx-auto">
-		<div th:each="image : ${post.images}">
-			<img class="card-img-top" th:src="${image.path}" alt="Card image cap"/>
-		</div>
-			<div class="card-body col-12 mb-4 py-2">
-			</div>
-			<a th:href="@{'/posts/show=' + ${post.id}}">
-				<div class="card-title col-12">
-					<h5 th:text="${post.title}"></h5>
-				</div>
-			</a>
-			<div class="card-text col-12">
-				<p th:text="${post.body}"></p>
-			</div>
-			<div class="card-text col-12">
-				<p>Posted by:
-					<span th:text="${post.user.username}"></span>
+<div class="container d-flex justify-items-center align-items-center">
+	<div th:each="post: ${posts}" class="card bg-dark col-12 col-sm-10 text-white my-auto py-4 mx-auto">
+		<img th:each="image : ${post.images}" class="img-fluid card-img-top" th:src="${image.path}" alt="Card image cap"/>
+		<a th:href="@{'/posts/show=' + ${post.id}}">
+			<div class="card-body">
+				<h5 th:text="${post.title}" class="card-title"></h5>
+				<p class="card-text">
+					<small class="text-muted">
+						Posted by: <span th:text="${post.user.username}"></span>
+					</small>
 				</p>
-				<small class="btn btn-small">
-					<span th:each="category: ${post.categories}"></span>
-				</small>
-				<a th:if="${post.user.username}" th:href="@{'/posts/edit=' + ${post.id}}">
-					<div sec:authorize="isAuthenticated()">
-						<input type="button" class="btn btn-primary" value="Edit"/>
-					</div>
-				</a>
 			</div>
-		</div>
+		</a>
+	</div>
 </div>
 <footer th:replace="fragments/footer :: footer"></footer>
 </body>

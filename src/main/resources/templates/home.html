@@ -2,17 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Home page')">
 </head>
-<body class="landing">
+<body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
-<video id="video" preload="" muted="" autoplay="" loop="">
-	<source th:src="@{/vid2.mp4}" type="video/mp4"/>
-</video>
-<div class="content col-11 col-sm-8 col-md-6 col-lg-4 mx-auto">
-	<h1 class="landingTitle text-center">For What It's Worth</h1>
-	<h5 class="landingTitle text-center">A blog providing real opinions, real reviews, and real answers, by real
-		everyday people.</h5>
+<div class="container d-flex justify-items-center align-items-center">
+	<video id="video" preload="" muted="" autoplay="" loop="">
+		<source th:src="@{/vid2.mp4}" type="video/mp4"/>
+	</video>
+	<div class="content col-12 col-sm-8 text-white my-5 mx-auto">
+		<h2 class="landingTitle text-center my-3">For What It's Worth</h2>
+		<h4 class="landingTitle text-center my-3">A blog providing real opinions, real reviews, and real answers, by
+			real
+			everyday people.</h4>
+	</div>
 </div>
-
 <footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>
