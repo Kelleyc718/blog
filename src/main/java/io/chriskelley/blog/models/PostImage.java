@@ -28,17 +28,30 @@ public class PostImage {
         this.post = post;
     }
 
-    public PostImage() { }
+    public PostImage() {
+    }
 
-    public long getId() { return id; }
+    public long getId() {
+        return id;
+    }
 
-    public void setId(long id) { this.id = id; }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-    public String getPath() { return path; }
+    public String getPath() {
+        return path;
+    }
 
-    public void setPath(String path) { this.path = path; }
+    public void setPath(String path) {
+        this.path = path;
+    }
 
-    public Post getPost() { return post; }
+    public Post getPost() {
+        return post;
+    }
 
-    public void setPost(Post post) { this.post = post; }
+    public void setPost(Post post) {
+        this.post = post;
+    }
 }

@@ -36,7 +36,7 @@ public class Post {
 
     public Post(String title, String body, User user, List<PostImage> Images,
                 List<Categories>
-            categories) {
+                        categories) {
         this.title = title;
         this.body = body;
         this.user = user;

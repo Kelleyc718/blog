@@ -1,5 +1,4 @@
-
-"use strict";
+'use strict';
 const newList = () => {
     let catList = document.getElementById('catList');
     let category = document.getElementById('category').value;

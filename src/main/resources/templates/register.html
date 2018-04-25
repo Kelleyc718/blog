@@ -3,16 +3,32 @@
 <head th:replace="fragments/head :: head('Login/Register')">
 </head>
 <body>
-<form method="POST" th:action="@{/register}">
-	<label class="d-block" for="username">Username</label>
-	<input class="d-block mx-auto" id="username" name="username" type="text"/>
-	<label class="d-block" for="email">Email</label>
-	<input class="d-block mx-auto" id="email" name="email" type="text"/>
-	<label class="d-block mt-3" for="password">Password</label>
-	<input class="d-block mx-auto" id="password" name="password" type="password"/>
-	<label class="d-block mt-3" for="password">Confirm Password</label>
-	<input  class="d-block mx-auto" id="confirm-password" name="confirm-password" type="password"/>
-	<input class="btn btn-primary my-3 mx-auto d-block" type="submit" value="Log In"/>
-</form>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+<div class="container">
+	<div class="row align-items-center">
+		<div class="card col-8 my-5 mt-4 mx-auto bg-dark text-center text-white">
+			<div class="card-body mx-auto">
+				<div class="card-title">
+					<h5>Register Now</h5>
+					<form method="POST" th:action="@{/register}">
+						<label class="d-block" for="username">Username</label>
+						<input class="d-block mx-auto rounded" id="username" name="username" type="text"/>
+						<label class="d-block mt-3" for="email">Email</label>
+						<input class="d-block mx-auto rounded" id="email" name="email" type="text"/>
+						<label class="d-block mt-3" for="password">Password</label>
+						<input class="d-block mx-auto rounded" id="password" name="password" type="password"/>
+						<label class="d-block mt-3" for="password">Confirm Password</label>
+						<input class="d-block mx-auto rounded" id="confirm-password" name="confirm-password"
+						       type="password"/>
+						<div class="alert alert-danger my-3" role="alert" th:if="${param.error}">
+							<p>Doesn't match password.</p>
+						</div>
+						<input class="btn btn-primary my-3 mx-auto d-block" type="submit" value="Register"/>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 </body>
 </html>

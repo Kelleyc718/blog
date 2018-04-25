@@ -9,7 +9,7 @@
 		<div th:each="image : ${post.images}">
 			<img class="card-img-top" th:src="${image.path}" alt="Card image cap"/>
 			<div class="card-body col-12 mb-4 py-2">
-		</div>
+			</div>
 			<a th:href="@{'/posts/show=' + ${post.id}}">
 				<div class="card-title col-12">
 					<h5 th:text="${post.title}"></h5>
@@ -34,6 +34,6 @@
 		</div>
 	</div>
 </div>
-	<footer th:replace="fragments/footer :: footer"></footer>
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>

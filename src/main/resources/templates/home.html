@@ -5,12 +5,13 @@
 <body class="landing">
 <nav th:replace="fragments/navbar :: navbar"></nav>
 <video id="video" preload="" muted="" autoplay="" loop="">
-	<source src="/vid2.mp4" type="video/mp4"/>
+	<source th:src="@{/vid2.mp4}" type="video/mp4"/>
 </video>
-	<div class="content col-11 col-sm-8 col-md-6 col-lg-4  mx-auto">
-			<h1 class="landingTitle text-center">For What It's Worth</h1>
-			<h5 class="landingTitle text-center">A blog providing real opinions, real reviews, and real answers, by real everyday people.</h5>
-	</div>
+<div class="content col-11 col-sm-8 col-md-6 col-lg-4 mx-auto">
+	<h1 class="landingTitle text-center">For What It's Worth</h1>
+	<h5 class="landingTitle text-center">A blog providing real opinions, real reviews, and real answers, by real
+		everyday people.</h5>
+</div>
 
 <footer th:replace="fragments/footer :: footer"></footer>
 </body>
