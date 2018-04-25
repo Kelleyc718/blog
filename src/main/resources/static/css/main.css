@@ -1,6 +1,5 @@
 body {
     font-family: 'Puritan', sans-serif;
-    color: #ffcb3c;
 }
 
 video {
@@ -28,4 +27,11 @@ nav {
     border-radius: 17px;
     background: rgba(0, 0, 0, 0.2);
     z-index: 999;
+}
+
+.nav-link > form > input {
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    padding-top: 0px;
 }
