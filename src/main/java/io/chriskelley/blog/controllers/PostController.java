@@ -54,7 +54,7 @@ public class PostController {
             uploadedFile.transferTo(destinationFile);
             User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             post.setUser(loggedInUser);
-            post.setPath("/public/uploads/" + filename);
+            post.setPath("/uploads/" + filename);
             postDao.save(post);
             model.addAttribute("message", "File successfully uploaded!");
             return "redirect:/posts";
