@@ -49,6 +49,9 @@ nav {
     color: #f8f9fa;
 }
 
+.post-cards {
+    min-height: 100%;
+}
 footer {
     width: 100%;
     height: 10vh;

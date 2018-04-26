@@ -4,9 +4,9 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: nav"></nav>
-<div class="container d-flex justify-items-center align-items-center flex-wrap h-100">
+<div class="container d-flex justify-items-center align-items-center flex-wrap">
 	<div th:each="post: ${posts}"
-	     class="card bg-dark col-12 col-md-5 text-white my-5 py-4 mx-auto d-block h-30">
+	     class="post-cards card bg-dark col-12 col-md-5 text-white my-5 py-4 mx-auto d-block h30">
 		<img class="img-fluid card-img-top" th:src="${post.path}" alt="Card image cap"/>
 		<a th:href="@{'/posts/show=' + ${post.id}}">
 			<div class="card-body w-100">
