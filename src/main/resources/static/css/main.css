@@ -5,11 +5,8 @@ html, body {
 }
 
 body {
+    height: 100%;
     font-family: 'Puritan', sans-serif;
-}
-
-.posts {
-    max-height: 30vh;
 }
 
 video {

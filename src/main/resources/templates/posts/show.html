@@ -4,10 +4,11 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
-<div class="container">
-	<div class="card bg-dark col-12 col-sm-10 col-lg-6 text-white my-5">
-		<div class="card-body col-12">
-			<div class="card-title col-12">
+<div class="container d-flex justify-items-center align-items-center flex-wrap">
+	<div class="card bg-dark col-10 text-white my-5 py-4 mx-auto d-block">
+		<div class="card-body">
+			<img class="img-fluid card-img-top" th:src="${post.path}" alt="Card image cap"/>
+			<div class="card-title">
 				<h5 th:text="${post.title}"></h5>
 			</div>
 			<div class="card-text col-12">
