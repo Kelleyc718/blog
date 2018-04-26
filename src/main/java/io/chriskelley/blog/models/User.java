@@ -3,6 +3,7 @@ package io.chriskelley.blog.models;
 // Imports managed by Spring Boot and ThymeLeaf
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 // Defines the table of 'User'
 @Entity
@@ -18,6 +19,8 @@ public class User {
     private String username;
 
     @Column(nullable = false)
+    @Size(min = 8, message = "Password must be a minimum of 8 characters," +
+            " include upper and lowercase characters, and one number.")
     private String password;
 
     @Column(nullable = false, unique = true)
