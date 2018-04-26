@@ -26,9 +26,6 @@ public class Post {
     @OneToOne
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
-    private List<PostImage> Images;
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "post_categories",
@@ -46,6 +43,12 @@ public class Post {
         this.categories = categories;
     }
 
+    public Post(String title, String body, String path, User user) {
+        this.title = title;
+        this.body = body;
+        this.path = path;
+        this.user = user;
+    }
 
     public Post() {
     }
@@ -88,14 +91,6 @@ public class Post {
 
     public void setCategories(List<Categories> categories) {
         this.categories = categories;
-    }
-
-    public List<PostImage> getImages() {
-        return Images;
-    }
-
-    public void setImages(List<PostImage> Images) {
-        this.Images = Images;
     }
 
     public String getPath() {

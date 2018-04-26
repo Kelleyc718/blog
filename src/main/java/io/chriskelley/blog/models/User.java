@@ -1,6 +1,7 @@
 package io.chriskelley.blog.models;
 
 // Imports managed by Spring Boot and ThymeLeaf
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -10,12 +11,13 @@ import javax.validation.constraints.Size;
 @Table(name = "user")
 public class User {
 
-    // 'Id' property is generated and incremented by Thymeleaf
     @Id
     @GeneratedValue
     private long id;
 
     @Column(unique = true, nullable = false)
+    @NotEmpty
+    @Size(min=2, max=30, message = "Username is invalid.")
     private String username;
 
     @Column(nullable = false)
@@ -26,16 +28,12 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    public User(String username, String password, String email) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-    }
+    private String confirmPassword;
 
     public User() {
     }
 
-    public User(User copy) {
+    User(User copy) {
         id = copy.id;
         email = copy.email;
         username = copy.username;

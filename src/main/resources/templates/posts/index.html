@@ -4,11 +4,11 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: nav"></nav>
-<div class="container d-flex justify-items-center align-items-center">
-	<div th:each="post: ${posts}" class="card bg-dark col-12 col-sm-10 text-white my-auto py-4 mx-auto">
-		<img th:each="image : ${post.images}" class="img-fluid card-img-top" th:src="${image.path}" alt="Card image cap"/>
+<div class="container d-flex justify-items-center align-items-center flex-wrap h-100">
+	<div th:each="post: ${posts}" class="card bg-dark col-12 col-md-5 text-white my-5 py-4 mx-3 d-block h-30">
+		<img class="img-fluid card-img-top" th:src="${post.path}" alt="Card image cap"/>
 		<a th:href="@{'/posts/show=' + ${post.id}}">
-			<div class="card-body">
+			<div class="card-body w-100">
 				<h5 th:text="${post.title}" class="card-title"></h5>
 				<p class="card-text">
 					<small class="text-muted">

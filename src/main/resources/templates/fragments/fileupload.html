@@ -3,7 +3,7 @@
 <head th:replace="fragments/head :: head('Upload a file!')">
 </head>
 <body>
-<form th:action="@{/posts/fileupload}" method="post" enctype="multipart/form-data">
+<form th:fragment="fileupload" th:action="@{/posts/fileupload}" method="post" enctype="multipart/form-data">
 	<label for="file">
 		Upload a file!
 	</label>

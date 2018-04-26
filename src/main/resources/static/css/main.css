@@ -1,11 +1,7 @@
 html, body {
-    height: 100vh;
+    min-height: 100%;
     width: 100vw;
     line-height: 1.6em;
-}
-
-.container {
-    height: 90%;
 }
 
 body {
@@ -45,13 +41,16 @@ nav {
     padding-top: 0px;
 }
 
+.container {
+    min-height: 100%;
+}
+
 .nav-link > form > input:hover {
     color: #f8f9fa;
 }
 
 footer {
     width: 100%;
-    position: absolute;
+    position: relative;
     bottom: 0;
-    left: 0;
 }

@@ -1,21 +1,19 @@
 package io.chriskelley.blog.controllers;
 
 import io.chriskelley.blog.models.Post;
-import io.chriskelley.blog.models.PostImage;
 import io.chriskelley.blog.models.User;
 import io.chriskelley.blog.repos.PostRepo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 
 @Controller
 public class PostController {
@@ -43,19 +41,28 @@ public class PostController {
         return "posts/create";
     }
 
+    @Value("${file-upload-path}")
+    private String uploadPath;
+
     @PostMapping("/posts/create")
-    public String createPost(@Valid Post post, Errors errors, Model model) {
-        if (errors.hasErrors()) {
-            model.addAttribute(errors);
-            model.addAttribute(post);
+    public String createPost(@Valid Post post, @RequestParam(name = "file")
+            MultipartFile uploadedFile, Model model) {
+        String filename = uploadedFile.getOriginalFilename();
+        String filepath = Paths.get(uploadPath, filename).toString();
+        File destinationFile = new File(filepath);
+        try {
+            uploadedFile.transferTo(destinationFile);
+            User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            post.setUser(loggedInUser);
+            post.setPath("/uploads/" + filename);
+            postDao.save(post);
+            model.addAttribute("message", "File successfully uploaded!");
+            return "redirect:/posts";
+        } catch (IOException e) {
+            e.printStackTrace();
+            model.addAttribute("message", "Oops! Something went wrong! " + e);
             return "/posts/create";
         }
-
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        post.setUser(loggedInUser);
-
-        postDao.save(post);
-        return "redirect:/posts";
     }
 
     @GetMapping("/posts/edit={id}")

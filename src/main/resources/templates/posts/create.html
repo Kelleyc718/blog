@@ -7,7 +7,7 @@
 <div class="container">
 	<div class="card col-12 col-md-6 my-5 mt-4 mx-auto bg-dark text-center">
 		<div class="card-body col-12">
-			<form method="POST" th:action="@{/posts/create}">
+			<form method="POST" th:action="@{/posts/create}" th:object="${post}" enctype="multipart/form-data">
 				<div class="card-title col-12">
 					<h4>Create a new Post!</h4>
 				</div>
@@ -32,6 +32,11 @@
 					<button type="button" id="addBtn">+</button>
 					<ul id="catList" th:field="*{categories}"></ul>
 				</div>
+				
+				<label for="file">
+					Upload a file!
+				</label>
+				<input id="file" name="file" type="file" />
 				<input id="submit" class="btn btn-primary" type="submit" value="Create Post"/>
 			</form>
 		</div>

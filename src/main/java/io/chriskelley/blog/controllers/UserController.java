@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -24,30 +25,27 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String createUserForm() {
+    public String createUserForm(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
         return "/register";
     }
 
     // POST request used to submit values input by user
     @PostMapping("/register")
     public String createUser(@Valid User user, Errors errors, Model model) {
-        if (errors.hasErrors()) {
+        if(errors.hasErrors()) {
             model.addAttribute(errors);
             model.addAttribute(user);
             return "/register";
         }
 
-        String username = user.getUsername();
-        if (userRepo.findByUsername(username) != null) {
-            String passHash = encoder.encode(user.getPassword());
-            user.setPassword(passHash);
-            userRepo.save(user);
-            return "redirect:/login";
-        } else {
-            return "redirect:/register";
-        }
-    }
+        String passHash = encoder.encode(user.getPassword());
 
+        user.setPassword(passHash);
+        userRepo.save(user);
+        return "redirect:/login";
+    }
 
     @GetMapping("/login")
     public String loginForm() {

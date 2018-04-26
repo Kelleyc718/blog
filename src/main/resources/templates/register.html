@@ -4,29 +4,37 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
-<div class="container">
-	<div class="row align-items-center">
-		<div class="card col-8 my-5 mt-4 mx-auto bg-dark text-center text-white">
-			<div class="card-body mx-auto">
+<div class="container text-white">
+	<div class="card col-12 col-md-6 my-5 mt-4 mx-auto bg-dark text-center">
+		<div class="card-body col-12">
+			<form method="POST" th:action="@{/register}" th:object="${user}">
 				<div class="card-title">
-					<h5>Register Now</h5>
-					<form method="POST" th:action="@{/register}">
-						<label class="d-block" for="username">Username</label>
-						<input class="d-block mx-auto rounded" id="username" name="username" type="text"/>
-						<label class="d-block mt-3" for="email">Email</label>
-						<input class="d-block mx-auto rounded" id="email" name="email" type="text"/>
-						<label class="d-block mt-3" for="password">Password</label>
-						<input class="d-block mx-auto rounded" id="password" name="password" type="password"/>
-						<label class="d-block mt-3" for="password">Confirm Password</label>
-						<input class="d-block mx-auto rounded" id="confirm-password" name="confirm-password"
-						       type="password"/>
-						<div class="alert alert-danger my-3" role="alert" th:if="${param.error}">
-							<p>Doesn't match password.</p>
-						</div>
-						<input class="btn btn-primary my-3 mx-auto d-block" type="submit" value="Register"/>
-					</form>
+					<h4>Register Now!</h4>
 				</div>
-			</div>
+				
+				<label class="d-block" for="username">Username</label>
+				<input class="d-block mx-auto rounded" name="username" id="username" type="text"/>
+				<div class="alert alert-danger my-3" th:if="${#fields.hasErrors('username')}" role="alert">
+					<p th:errors="*{username}"></p>
+				</div>
+				
+				<label class="d-block mt-3" for="email">Email</label>
+				<input class="d-block mx-auto rounded" id="email" name="email" type="text"/>
+				<div class="alert alert-danger my-3" th:if="${#fields.hasErrors('email')}" role="alert">
+					<p th:errors="*{email}"></p>
+				</div>
+				
+				<label class="d-block mt-3" for="password">Password</label>
+				<input class="d-block mx-auto rounded" id="password" name="password" type="password"/>
+				<div class="alert alert-danger my-3" th:if="${#fields.hasErrors('password')}" role="alert">
+					<p th:errors="*{password}"></p>
+				</div>
+				
+				<label class="d-block mt-3" for="confirm-password">Confirm Password</label>
+				<input class="d-block mx-auto rounded" id="confirm-password" name="confirm-password" type="password"/>
+				
+				<input class="btn btn-primary my-3 mx-auto d-block" type="submit" value="Register"/>
+			</form>
 		</div>
 	</div>
 </div>
