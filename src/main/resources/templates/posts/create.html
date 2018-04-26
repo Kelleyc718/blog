@@ -5,38 +5,34 @@
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
 <div class="container">
-	<div class="card col-12 col-md-6 my-5 mt-4 mx-auto bg-dark text-center">
+	<div class="card col-12 col-md-10 my-5 mt-4 mx-auto bg-dark text-white text-center">
 		<div class="card-body col-12">
 			<form method="POST" th:action="@{/posts/create}" th:object="${post}" enctype="multipart/form-data">
-				<div class="card-title col-12">
+				<div class="card-title">
 					<h4>Create a new Post!</h4>
 				</div>
 				<div class="card-text my-3">
 					<label class="d-block mx-auto" for="title">Title</label>
-					<input class="col-12 d-block mx-auto" id="title" th:field="*{title}"/>
+					<input class="col-10 d-block mx-auto rounded" id="title" th:field="*{title}"/>
 					<div class="alert alert-danger my-3" th:if="${#fields.hasErrors('title')}" role="alert">
 						<strong th:errors="*{title}"></strong>
 					</div>
 				</div>
 				<div class="card-text my-3">
 					<label class="d-block mx-auto" for="body">Share your thoughts with the world!</label>
-					<textarea class="col-12" id="body" th:field="*{body}"></textarea>
+					<textarea class="col-10 rounded" id="body" th:field="*{body}"></textarea>
 					<div class="alert alert-danger my-2" th:if="${#fields.hasErrors('body')}" role="alert">
 						<strong th:errors="*{body}"></strong>
 					</div>
 				</div>
-				<div class="card-text my-3">
-					<label class="d-block mx-auto" for="category">Tag some categories to reach others with similar
-						interests.</label>
-					<input id="category"/>
-					<button type="button" id="addBtn">+</button>
-					<ul id="catList" th:field="*{categories}"></ul>
+				<div class="input-group mb-3 col-10 mx-auto">
+					<label class="custom-file-label text-left" for="file">
+						Choose file
+					</label>
+					<div class="custom-file">
+						<input class="custom-file-input" id="file" name="file" type="file"/>
+					</div>
 				</div>
-				
-				<label for="file">
-					Upload a file!
-				</label>
-				<input id="file" name="file" type="file" />
 				<input id="submit" class="btn btn-primary" type="submit" value="Create Post"/>
 			</form>
 		</div>
