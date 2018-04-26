@@ -20,30 +20,14 @@ public class Post {
     @NotEmpty(message = "Body cannot be left blank.")
     private String body;
 
+    @Column
+    private String path;
+
     @OneToOne
     private User user;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
     private List<PostImage> Images;
-
-    public List<PostImage> getImages() {
-        return Images;
-    }
-
-    public void setImages(List<PostImage> Images) {
-        this.Images = Images;
-    }
-
-    public Post(String title, String body, User user, List<PostImage> Images,
-                List<Categories>
-                        categories) {
-        this.title = title;
-        this.body = body;
-        this.user = user;
-        this.Images = Images;
-        this.categories = categories;
-
-    }
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -53,6 +37,8 @@ public class Post {
     )
     private List<Categories> categories;
 
+
+
     public Post(String title, String body, User user, List<Categories> categories) {
         this.title = title;
         this.body = body;
@@ -60,11 +46,6 @@ public class Post {
         this.categories = categories;
     }
 
-    public Post(String title, String body, User user) {
-        this.title = title;
-        this.body = body;
-        this.user = user;
-    }
 
     public Post() {
     }
@@ -107,6 +88,26 @@ public class Post {
 
     public void setCategories(List<Categories> categories) {
         this.categories = categories;
+    }
+
+    public List<PostImage> getImages() {
+        return Images;
+    }
+
+    public void setImages(List<PostImage> Images) {
+        this.Images = Images;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public Post(String path) {
+        this.path = path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }
 

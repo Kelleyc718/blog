@@ -1,8 +1,10 @@
 package io.chriskelley.blog.controllers;
 
 import io.chriskelley.blog.models.Post;
+import io.chriskelley.blog.models.PostImage;
 import io.chriskelley.blog.models.User;
 import io.chriskelley.blog.repos.PostRepo;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.io.File;
 
 @Controller
 public class PostController {
