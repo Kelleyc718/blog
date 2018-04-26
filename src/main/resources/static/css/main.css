@@ -39,7 +39,7 @@ nav {
 }
 
 .container {
-    min-height: 90vh;
+    min-height: 100vh;
 }
 
 .nav-link > form > input:hover {
