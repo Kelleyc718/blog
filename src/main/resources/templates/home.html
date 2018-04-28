@@ -7,6 +7,7 @@
 <div class="container d-flex justify-items-center align-items-center">
 	<video id="video" preload="" muted="" autoplay="" loop="">
 		<source th:src="@{/vid2.mp4}" type="video/mp4"/>
+		<img th:src="@{/images/fallback.jpg}" title="Your browser does not support the video tag"/>
 	</video>
 	<div class="content col-12 col-sm-8 text-white my-5 mx-auto">
 		<h2 class="landingTitle text-center my-3">For What It's Worth</h2>
