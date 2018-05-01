@@ -29,4 +29,4 @@ build:
       application_name: springDemo
       application_type: java
       file: blog-dist.zip
-      subscription_type: Hourly
+      subscription_type: hourly
