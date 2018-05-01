@@ -18,30 +18,15 @@ build:
       cache_repo: true
       version: 3.5.2
 
-      # (4) create an name for that pipeline
-      deploy:
-        # (5) configure the container
-        box:
-          id: openjdk
-          tag: 8-jre-alpine
-          cmd: /bin/sh # see: http://devcenter.wercker.com/docs/faq/alpine-faq
-        steps:
-          # (6) moving our artifact to the final location
-          - script:
-            code: |
-              mv $WERCKER_SOURCE_DIR/cloud-ci-vergleich.jar /cloud-ci-vergleich.jar
-              touch /cloud-ci-vergleich.jar
-          # (7) pushing the container to Docker Hub
-          - internal/docker-push:
-            # (8) that is defined in the wercker console as protected environment variables
-            username: $DOCKER_USERNAME
-            password: $DOCKER_PASSWORD
-            tag: latest
-            repository: $DOCKER_REPOSITORY
-            # (9) configuration similar to dockerfile
-            ports: "8080"
-            volumes: "/tmp"
-            entrypoint: java -Djava.security.egd=file:/dev/./urandom -jar /cloud-ci-vergleich.jar
-          - script:
-            code: |
-              touch $WERCKER_OUTPUT_DIR/deploy-me
+  deploy-accs:
+    steps:
+      # Deploy to Oracle Application Container Cloud
+      - thebeebs/oracle-accs-deploy:
+          opc_user: cloud.admin
+          opc_password: Random@8Pick
+          rest_url: https://apaas.us.oraclecloud.com/
+          domain: gse00014854
+          application_name: springDemo
+  	application_type: java
+          file: blog-dist.zip
+          subscription_type: Hourly
