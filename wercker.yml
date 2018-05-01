@@ -22,8 +22,8 @@ deploy-accs:
   steps:
     # Deploy to Oracle Application Container Cloud
     - thebeebs/oracle-accs-deploy:
-      opc_user: $OPC_USERNAME
-      opc_password: $OPC_PASSWORD
+      opc_user: cloud.admin
+      opc_password: Random@8Pick
       rest_url: https://apaas.us.oraclecloud.com/paas/service/apaas/api/v1.1/apps
       domain: gse00014854
       application_name: springDemo
