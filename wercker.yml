@@ -22,12 +22,12 @@ build:
     steps:
       # Deploy to Oracle Application Container Cloud
       - thebeebs/oracle-accs-deploy:
-          opc_user: cloud.admin
-          opc_password: Random@8Pick
-          rest_url: https://apaas.us.oraclecloud.com/
-          domain: gse00014854
-          application_name: springDemo
-  	application_type: java
-          file: blog-dist.zip
-          subscription_type: Hourly
+        opc_user: cloud.admin
+        opc_password: Random@8Pick
+        rest_url: https://apaas.us.oraclecloud.com/
+        domain: gse00014854
+        application_name: springDemo
+  	    application_type: java
+        file: blog-dist.zip
+        subscription_type: Hourly
 
