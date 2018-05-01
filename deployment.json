@@ -1,0 +1,10 @@
+{
+  "opc_username": "cloud.admin",
+  "opc_password": "Random8@Pick",
+  "rest_url": "https://apaas.us.oraclecloud.com/",
+  "domain": "gse00014854",
+  "application_name": "springdemo",
+  "application_type": "java",
+  "file": "blog-dist.zip",
+  "subscription_type": "hourly"
+}
