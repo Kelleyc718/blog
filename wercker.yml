@@ -25,7 +25,7 @@ deploy-accs:
       opc_user: $OPC_USERNAME
       opc_password: $OPC_PASSWORD
       rest_url: $REST_URL
-      domain: https://apaas.us.oraclecloud.com/
+      domain: https://apaas.us.oraclecloud.com/paas/service/apaas/api/v1.1/apps
       application_name: springDemo
       application_type: java
       file: blog-dist.zip
