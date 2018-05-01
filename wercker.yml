@@ -1,10 +1,9 @@
 box: combient/java-mvn
 build:
   steps:
-    # Build application
-    - script:
-    name: Maven install
-    code: mvn install
+  - script:
+  name: Maven install
+  code: mvn install
 
 deploy-accs:
   steps:
