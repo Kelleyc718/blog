@@ -4,8 +4,8 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
-<div class="container">
-	<div class="card col-12 col-md-6 my-5 mt-4 mx-auto">
+<div class="container text-white d-flex justify-items-center align-items-center">
+	<div class="post-cards card bg-dark col-12 col-md-5 text-white my-5 py-4 mx-auto d-block h-50">
 		<div class="card-body col-12">
 			<form method="POST" th:action="@{/posts/delete}" th:object="${post}">
 				<input type="hidden" th:field="*{id}" th:value="*{id}"/>

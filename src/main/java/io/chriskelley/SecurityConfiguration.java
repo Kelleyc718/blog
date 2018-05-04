@@ -5,10 +5,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+@EnableWebSecurity
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private UserDetailsLoader usersLoader;
@@ -33,9 +35,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
+                .permitAll()
                 .defaultSuccessUrl("/posts") // user's home page, it can be any URL
                 .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
@@ -45,7 +47,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/posts") // anyone can see the home and the ads pages
+                .antMatchers(   "/register",
+                                "/static/**",
+                                "/h2/**",
+                                "/resources/**",
+                                "/resources/static/css/**",
+                                "/resources/static/images/**" ,
+                                "/resources/static/js/**",
+                                "/resources/static/uploads/**") // anyone can see the
+                // home and the ads pages
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
@@ -55,7 +65,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/posts/edit", // only authenticated users can edit ads
                         "/posts/delete"
                 )
-                .authenticated()
-        ;
+                .authenticated();
     }
 }

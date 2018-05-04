@@ -59,7 +59,7 @@ public class PostController {
     @GetMapping("/posts/edit={id}")
     public String showEdit(@PathVariable long id, Model model) {
         model.addAttribute("post", postDao.findOne(id));
-        return "/posts/edit";
+        return "posts/edit";
     }
 
     @PostMapping("/posts/edit")
@@ -72,7 +72,7 @@ public class PostController {
     public String deletePost(@PathVariable long id, Model model) {
         model.addAttribute("id", id);
         model.addAttribute("post", postDao.findOne(id));
-        return "/posts/delete";
+        return "posts/delete";
     }
 
     @PostMapping("/posts/delete")

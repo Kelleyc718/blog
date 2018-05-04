@@ -1,8 +1,11 @@
 package io.chriskelley.controllers;
 
 import io.chriskelley.models.User;
+import io.chriskelley.models.UserWithRoles;
 import io.chriskelley.repos.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +30,7 @@ public class UserController {
     public String createUserForm(Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        return "/register";
+        return "register";
     }
 
     // POST request used to submit values input by user
@@ -36,7 +39,7 @@ public class UserController {
         if(errors.hasErrors()) {
             model.addAttribute(errors);
             model.addAttribute(user);
-            return "/register";
+            return "register";
         }
 
         String passHash = encoder.encode(user.getPassword());
@@ -48,11 +51,10 @@ public class UserController {
 
     @GetMapping("/login")
     public String loginForm() {
-        Object loggedInUser = SecurityContextHolder.getContext().getAuthentication()
-                .getPrincipal();
+        Object loggedInUser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (loggedInUser.toString().equalsIgnoreCase("anonymousUser")) {
-            return "/login";
+            return "login";
         }
-        return "redirect:/posts";
+        return "redirect:posts";
     }
 }

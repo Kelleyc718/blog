@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
+<html xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head th:replace="fragments/head :: head('Blog Post')">
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar"></nav>
-<div class="container d-flex justify-items-center align-items-center flex-wrap">
-	<div class="card bg-dark col-10 text-white my-5 py-4 mx-auto d-block">
+<div class="container text-white d-flex justify-items-center align-items-center">
+	<div class="post-cards card bg-dark col-12 col-md-10 text-white my-5 py-4 mx-auto d-block">
 		<div class="card-body">
 			<img class="img-fluid card-img-top mb-3" th:src="${post.path}" alt="Card image cap"/>
 			<div class="card-title">
@@ -17,10 +18,16 @@
 			<div class="card-subtitle">
 				<small th:text="${post.user.username}"></small>
 			</div>
+			<div class="card-subtitle">
+				<small th:if="${#authentication.getPrincipal() == post.user.username}"
+				       class="btn btn-primary"><a th:href="@{'/posts/delete'+ ${post.id}}"></a></small>
+				<small th:if="${#authentication.getPrincipal() == post.user.username}"
+				       class="btn btn-primary"><a
+						th:href="@{'/posts/edit'+ ${post.id}}"></a></small>
+			</div>
 		</div>
 	</div>
 </div>
-<footer th:replace="fragments/footer :: footer">
-</footer>
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>

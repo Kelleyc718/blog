@@ -1,0 +1,15 @@
+{
+  "runtime": {
+    "majorVersion": "8"
+  },
+  "type": "web",
+  "command": "java -jar blog-0.0.7.jar",
+  "notes": "simple blog app",
+  "startupTime": "120",
+  "release": {
+    "build": "20"
+  },
+  "mode": "rolling",
+  "healthCheck": {
+  }
+}

@@ -3,23 +3,15 @@
 <head th:replace="fragments/head :: head('Opps, ' + ${error})">
 </head>
 <body>
-<th:block th:switch="${error}">
+<nav th:replace="fragments/navbar :: navbar"></nav>
+<div class="container flex justify-content-center align-content-center h-100" th:switch="${error}">
 	<div th:case="'Not Found'">
 		<h1>Hmm, something broke...</h1>
 	</div>
 	<div th:case="'Forbidden'">
 		<h1>You aren't supposed to be here, don't do it again ok?!</h1>
 	</div>
-</th:block>
-<p>Watch a video instead</p>
-<iframe
-		width="420"
-		height="315"
-		src="https://www.youtube.com/embed/NN75im_us4k?autoplay=1"
-		frameborder="0"
-		allowfullscreen="allowfullscreen"
->
-</iframe>
+</div>
 <footer th:replace="fragments/footer :: footer">
 </footer>
 </body>
